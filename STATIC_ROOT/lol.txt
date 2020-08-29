@@ -1,0 +1,2 @@
+This is a file I had to make so that git would take STATIC_ROOT
+...because it doesn't take empty folder apparently (I haven't experimented khud do)
