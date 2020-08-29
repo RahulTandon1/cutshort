@@ -17,7 +17,7 @@ def check(request, shortlink):
         return HttpResponse(dumps({'link': shortlink, 'available': False}))
     else:
         return HttpResponse(dumps({'link': shortlink, 'available': True}))
-    return HttpResponseServerError()
+    return HttpResponseServerError('Rahul ka khud ka server error')
 
 
 def create(request):
@@ -34,7 +34,7 @@ def create(request):
     try:
         shortlink = reqBody['shortlink']
 
-        if shortlink=='':
+        if shortlink == '':
             # ik it's wrong...sorry.
             raise KeyError('Empty shortlink')
         if linkExists(shortlink):
