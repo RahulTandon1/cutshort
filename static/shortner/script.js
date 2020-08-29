@@ -64,12 +64,15 @@ function getShortlink() {
 }
 
 function showResult(shortlink) {
+  // !!!!!!!
+  // note! Right now I've have hardcoded the HTTP bit.
+  // !!!!!!!
   // make result div visible
   document.getElementById("result").style.display = "block";
 
   let resultAnchor = document.getElementById("result-link");
   let hostURL = window.location.hostname;
-  url = `${hostURL}/${shortlink}`;
+  url = `http://${hostURL}/${shortlink}`;
   resultAnchor.href = url;
   resultAnchor.innerText = url;
 }
