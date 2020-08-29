@@ -73,6 +73,7 @@ function showResult(shortlink) {
   let resultAnchor = document.getElementById("result-link");
   let hostURL = window.location.hostname;
   url = `http://${hostURL}/${shortlink}`;
+  console.log("url", url);
   resultAnchor.href = url;
   resultAnchor.innerText = url;
 }
