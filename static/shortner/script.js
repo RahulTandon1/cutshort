@@ -109,26 +109,30 @@ function verifyShortLink() {
 }
 
 // this function was sourced from https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+// and this StackOverflow post ans:
+// https://stackoverflow.com/questions/50795042/create-a-copy-button-without-an-input-text-box#:~:text=2%20Answers&text=You%20can%20use%20this%20kind,your%20onclick%20in%20the%20HTML.)&text=%3Cbutton%20id%3D%22Copy%22,here%2C%20to%20try!%22%3E
 function copyShortlink() {
-  // get link href
   let copyText = document.getElementById("result-link").href;
-  console.log(copyText);
 
-  /* do the cool copy stuff */
-  clip = navigator.clipboard;
-  clip
-    .writeText(copyText)
-    .then(() => {
-      let statusP = document.getElementById("result-copy-status");
-      statusP.innerText = `Copied!`;
+  // temp input obj
+  let tempInput = document.createElement("input");
+  tempInput.value = copyText;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  // removing temp input obj
+  document.body.removeChild(tempInput);
+  alertCopyStatus();
+}
 
-      setTimeout(
-        (statusP) => {
-          statusP.innerText = "";
-        },
-        2000,
-        statusP
-      );
-    })
-    .catch((err) => console.error("error while copying to clipboard", err));
+function alertCopyStatus() {
+  let statusP = document.getElementById("result-copy-status");
+  statusP.innerText = `Copied!`;
+  setTimeout(
+    (statusP) => {
+      statusP.innerText = "";
+    },
+    2000,
+    statusP
+  );
 }
