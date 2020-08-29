@@ -41,7 +41,11 @@
         <input id="submitBtn" type="submit" onclick="create()" disabled/><br>
         
         
-        <div id="result"></div>
+        <div id="result">
+            <a id="result-link" target="_blank"></a><br>
+            <button id="result-copy-btn" onclick="copyShortlink()">Copy Shortlink URL</button>
+            <p id="result-copy-status"></p>
+        </div>
     </section>
 
     {% csrf_token %}

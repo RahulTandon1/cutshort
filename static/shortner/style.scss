@@ -53,6 +53,14 @@ header {
   #result {
     margin-top: 20px;
   }
+  #result {
+    // display: none;
+
+    #result-copy-btn {
+      border-radius: 5px;
+      border-color: $text-grey;
+    }
+  }
   padding-bottom: 20px;
 }
 

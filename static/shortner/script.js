@@ -64,8 +64,14 @@ function getShortlink() {
 }
 
 function showResult(shortlink) {
-  let resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = `<a href='/${shortlink}'>cutshort.in/${shortlink}</a>`;
+  // make result div visible
+  document.getElementById("result").style.display = "block";
+
+  let resultAnchor = document.getElementById("result-link");
+  let hostURL = window.location.hostname;
+  url = `${hostURL}/${shortlink}`;
+  resultAnchor.href = url;
+  resultAnchor.innerText = url;
 }
 
 function verifyLongLink() {
@@ -96,4 +102,28 @@ function verifyShortLink() {
       })
       .catch((ex) => console.error(ex));
   }
+}
+
+// this function was sourced from https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+function copyShortlink() {
+  // get link href
+  let copyText = document.getElementById("result-link").href;
+  console.log(copyText);
+
+  /* do the cool copy stuff */
+  navigator.clipboard
+    .writeText(copyText)
+    .then(() => {
+      let statusP = document.getElementById("result-copy-status");
+      statusP.innerText = `Copied!`;
+
+      setTimeout(
+        (statusP) => {
+          statusP.innerText = "";
+        },
+        2000,
+        statusP
+      );
+    })
+    .catch((err) => console.error("error while copying to clipboard", err));
 }
