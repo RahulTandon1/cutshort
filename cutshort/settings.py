@@ -82,9 +82,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
-db_from_env = dj_database_url.config(
-    defaut='mysql://bd822af7915d86:571d5421@eu-cdbr-west-03.cleardb.net/heroku_7b544233d73da46?reconnect=true', conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES['default'] = dj_database_url.config(default='mysql://bd822af7915d86:571d5421@eu-cdbr-west-03.cleardb.net/heroku_7b544233d73da46?reconnect=true',
+                                              conn_max_age=600, ssl_require=True)
+
 print(DATABASES['default'])
 
 
