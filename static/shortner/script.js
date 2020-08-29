@@ -7,7 +7,6 @@ async function isAvailable() {
     });
     res = await res.json();
     let availableStatus = res.available;
-    console.log("avail", availableStatus);
     return availableStatus;
   } catch (ex) {
     console.log(ex);
@@ -29,7 +28,6 @@ function create() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
       showResult(data.shortlink);
     })
     .catch((error) => {
@@ -71,7 +69,6 @@ function showResult(shortlink) {
 }
 
 function verifyLongLink() {
-  console.log("called verify");
   let t = String(getLonglink());
   let btn = document.getElementById("submitBtn");
   if (t.startsWith("http://") || t.startsWith("https://")) {
@@ -84,22 +81,19 @@ function verifyLongLink() {
 function verifyShortLink() {
   let t = getShortlink();
   let btn = document.getElementById("submitBtn");
-  isAvailable()
-    .then((res) => {
-      // if avaiable
-      if (res == true && t != "") {
-        document.getElementById("shortlink-status").color = "blue";
-        document.getElementById("shortlink-status").innerText = "available";
-      } else {
-        document.getElementById("shortlink-status").color = "red";
-        document.getElementById("shortlink-status").innerText = "NOT available";
-      }
-    })
-    .catch((ex) => console.error(ex));
-  // if () {
-  //   btn.disabled = false;
-  // }
-  // else if (btn.disabled == false){
-  //   btn.disabled =true;
-  // }
+  if (t != "") {
+    isAvailable()
+      .then((res) => {
+        // if avaiable
+        if (res == true) {
+          document.getElementById("shortlink-status").color = "blue";
+          document.getElementById("shortlink-status").innerText = "available";
+        } else {
+          document.getElementById("shortlink-status").color = "red";
+          document.getElementById("shortlink-status").innerText =
+            "NOT available";
+        }
+      })
+      .catch((ex) => console.error(ex));
+  }
 }

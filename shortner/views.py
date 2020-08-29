@@ -14,12 +14,10 @@ def index(request):
 
 def check(request, shortlink):
     if linkExists(shortlink):
-        print('shortlink not available return')
         return HttpResponse(dumps({'link': shortlink, 'available': False}))
     else:
         return HttpResponse(dumps({'link': shortlink, 'available': True}))
-        print('shortlink IS available return')
-    print('nothing return')
+    print('nothing got returned')
 
 
 def create(request):
