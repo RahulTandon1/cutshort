@@ -1,0 +1,38 @@
+- Ensure uniqueness of mini
+- Ensure link when saving
+- POST:
+    - Check
+        - ToCheck: True
+        - shortLink: "string"
+    - Create
+        - ToCreate: True
+        - shortLink:
+        - longLink: 
+    
+
+
+homepage
+    Get:
+    // If payload
+        // if okay
+        // if not okay
+        resend homepage code OR send a joke object
+    // If no payload just return homepage
+
+    Post
+    // validate url presence
+    // Create
+    // send confirmatory json and display that on page
+
+/shortLink
+    // Check db and redirect accordingly
+    // If not found 404.
+
+notes:
+'# NOTE/FOR LATER: Maybe do a redirect here? in' views.py
+
+EXTRA
+click to copy (https://www.w3schools.com/howto/howto_js_copy_clipboard.asp) + bootstrap alert
+read only /disbaled
+bootstrap's input groups (https://getbootstrap.com/docs/4.5/components/input-group/)
+

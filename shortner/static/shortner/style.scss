@@ -1,0 +1,81 @@
+// variables
+$text-grey: #575757;
+$bg-blue: #1179be;
+$bg-orange: #ffaa06;
+
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  font-family: "Oxygen", sans-serif;
+  // border-style: dotted;
+}
+body {
+  margin-top: 30px;
+}
+header {
+  h1 {
+    text-align: center;
+  }
+}
+
+#main-shortner {
+  background-color: #e9ecef;
+  font-size: 1.2em;
+  text-align: center;
+  h3 {
+    color: $text-grey;
+  }
+  hr {
+    border-width: 2px;
+  }
+  div {
+    margin-top: 30px;
+    label {
+      margin-top: 10px;
+    }
+  }
+  #shortlink-span span {
+    padding: 5px 5px 3px 5px;
+    border-radius: 5px 2px 2px 5px;
+    background-color: #e9ecef;
+    margin-top: 25px;
+
+    input {
+      padding: 5px 20px;
+      font-size: 1.5em;
+    }
+  }
+
+  #submitBtn,
+  #result {
+    margin-top: 20px;
+  }
+  padding-bottom: 20px;
+}
+
+#about {
+  margin-top: 30px;
+  text-align: center;
+  h1 {
+    color: $text-grey;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+  div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    p {
+      font-size: 1.2em;
+    }
+    img {
+      width: 30%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+  }
+}

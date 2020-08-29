@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  font-family: "Oxygen", sans-serif;
+}
+
+body {
+  margin-top: 30px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+#main-shortner {
+  background-color: #e9ecef;
+  font-size: 1.2em;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#main-shortner h3 {
+  color: #575757;
+}
+
+#main-shortner hr {
+  border-width: 2px;
+}
+
+#main-shortner div {
+  margin-top: 30px;
+}
+
+#main-shortner div label {
+  margin-top: 10px;
+}
+
+#main-shortner #shortlink-span span {
+  padding: 5px 5px 3px 5px;
+  border-radius: 5px 2px 2px 5px;
+  background-color: #e9ecef;
+  margin-top: 25px;
+}
+
+#main-shortner #shortlink-span span input {
+  padding: 5px 20px;
+  font-size: 1.5em;
+}
+
+#main-shortner #submitBtn,
+#main-shortner #result {
+  margin-top: 20px;
+}
+
+#about {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#about h1 {
+  color: #575757;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+#about div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#about div p {
+  font-size: 1.2em;
+}
+
+#about div img {
+  width: 30%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
