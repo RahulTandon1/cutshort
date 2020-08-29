@@ -79,7 +79,11 @@ WSGI_APPLICATION = 'cutshort.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+
     }
 }
 DATABASES['default'] = dj_database_url.config(default='mysql://bd822af7915d86:571d5421@eu-cdbr-west-03.cleardb.net/heroku_7b544233d73da46',
