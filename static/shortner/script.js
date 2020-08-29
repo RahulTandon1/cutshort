@@ -115,7 +115,8 @@ function copyShortlink() {
   console.log(copyText);
 
   /* do the cool copy stuff */
-  navigator.clipboard
+  clip = navigator.clipboard;
+  clip
     .writeText(copyText)
     .then(() => {
       let statusP = document.getElementById("result-copy-status");
