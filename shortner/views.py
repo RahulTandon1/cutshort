@@ -17,7 +17,6 @@ def check(request, shortlink):
         return HttpResponse(dumps({'link': shortlink, 'available': False}))
     else:
         return HttpResponse(dumps({'link': shortlink, 'available': True}))
-    return HttpResponseServerError('Rahul ka khud ka server error')
 
 
 def create(request):
