@@ -5,7 +5,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('/robots.txt', views.robots_txt, name='robots_txt'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
     path('', views.index, name='index'),
     path('api/check/<str:shortlink>', views.check, name="check"),
     path('api/create/', views.create, name="create"),
