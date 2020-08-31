@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tfi#c&2^ot4(o+3%g72lj=32by@1^5l1*cw=d_e=6^p4!$0o)y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['cutshort-trial.herokuapp.com',
                  'localhost', 'www.cutshort.in', 'cutshort.in']

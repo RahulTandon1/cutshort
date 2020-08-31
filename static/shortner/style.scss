@@ -22,6 +22,7 @@ header {
 }
 
 #main-shortner {
+  padding-top: 20px;
   background-color: #e9ecef;
   font-size: 1.2em;
   text-align: center;
@@ -30,12 +31,19 @@ header {
   }
   hr {
     border-width: 2px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: lighten($text-grey, 35%);
   }
   div {
     margin-top: 30px;
     label {
       margin-top: 10px;
     }
+  }
+  #longlink-div input {
+    padding-left: 5px;
   }
   #shortlink-span span {
     padding: 5px 5px 3px 5px;
