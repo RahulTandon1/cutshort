@@ -89,6 +89,8 @@ header h1 {
 
 #about div p {
   font-size: 1.5em;
+  -ms-flex-preferred-size: 500px;
+      flex-basis: 500px;
 }
 
 #about div img {
