@@ -8,6 +8,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
 
 
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Disallow: /admin/",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
 def index(request):
     return render(request, 'shortner/index.html')
 
