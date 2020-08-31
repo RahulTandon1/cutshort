@@ -12,6 +12,7 @@ def robots_txt(request):
     lines = [
         "User-Agent: *",
         "Disallow: /admin/",
+        "Disallow: /*"
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
