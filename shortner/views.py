@@ -11,8 +11,8 @@ from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResp
 def robots_txt(request):
     lines = [
         "User-Agent: *",
-        "Disallow: /admin/",
-        "Disallow: /*"
+        "Disallow: /admin/"
+        # "Disallow: /*"
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
