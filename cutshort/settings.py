@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # ik it's not a good variable name. I just felt like naming is something like this
 SECRET_KEY = os.environ.get('secret_key')
-
+DB_URL = os.environ.get('DATABASE_URL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -88,7 +88,7 @@ DATABASES = {
 
     }
 }
-DATABASES['default'] = dj_database_url.config(default='mysql://bd822af7915d86:571d5421@eu-cdbr-west-03.cleardb.net/heroku_7b544233d73da46',
+DATABASES['default'] = dj_database_url.config(default=DB_URL,
                                               conn_max_age=600)
 
 

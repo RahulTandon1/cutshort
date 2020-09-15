@@ -71,7 +71,8 @@ function showResult(shortlink) {
   document.getElementById("result").style.display = "block";
 
   let resultAnchor = document.getElementById("result-link");
-  let hostURL = window.location.hostname;
+  // let hostURL = window.location.hostname;
+  let hostURL = "cutshort.in"; // hardcoding cutshort.in
   url = `http://${hostURL}/${shortlink}`;
   console.log("url", url);
   resultAnchor.href = url;
@@ -90,7 +91,6 @@ function verifyLongLink() {
 
 function verifyShortLink() {
   let t = getShortlink();
-  let btn = document.getElementById("submitBtn");
   if (t != "") {
     isAvailable()
       .then((res) => {
