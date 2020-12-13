@@ -1,6 +1,7 @@
 # from django.contrib import messages
 from json import loads, dumps
 from .models import Link
+from django.db.models import Sum
 import random
 import string
 
@@ -104,3 +105,7 @@ def clicks(request, shortlink):
 def get_all_links(request):
     count = Link.objects.all().count()
     return HttpResponse(count)
+
+def get_total_clicks(request):
+    total_clicks = Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks']
+    return HttpResponse(total_clicks)
