@@ -61,6 +61,11 @@ def create(request):
 
 def rediretor(request, shortlink):
     shortlinkObj = get_object_or_404(Link, pk=shortlink)
+
+    # uncomment below lines when adding feature
+    shortlinkObj.clicks += 1
+    shortlinkObj.save()
+
     return redirect(shortlinkObj.longlink)
 
 
@@ -85,3 +90,17 @@ def get_random_string(length):
     letters = string.ascii_lowercase
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
+
+
+def clicks(request, shortlink):
+    # print(f"shortlink of cliks is {shortlink}\n")
+    if linkExists(shortlink):
+        link = Link.objects.get(pk=shortlink)
+        return HttpResponse(link.clicks)
+        
+    else:
+        return HttpResponse(0)
+
+def get_all_links(request):
+    count = Link.objects.all().count()
+    return HttpResponse(count)

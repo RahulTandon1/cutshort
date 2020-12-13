@@ -9,7 +9,11 @@ class Link(models.Model):
         max_length=200,
         unique=True,
         primary_key=True)
+
     longlink = models.CharField('long url', max_length=350)
+
+    # uncomment below line when adding feature
+    clicks = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return str({"shortlink": self.shortlink, 'longlink': self.longlink})
@@ -17,5 +21,7 @@ class Link(models.Model):
     def getDict(self):
         return {
             "shortlink": self.shortlink,
-            "longlink": self.longlink
+            "longlink": self.longlink,
+            "clicks": self.clicks
+
         }
