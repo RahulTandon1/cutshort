@@ -28,6 +28,7 @@ DB_URL = os.environ.get('DATABASE_URL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+
 ALLOWED_HOSTS = ['cutshort-trial.herokuapp.com',
                  'localhost', 'www.cutshort.in', 'cutshort.in']
 
