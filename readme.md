@@ -8,7 +8,7 @@ Cutshort is URL Shortner built with Django, MySQL, and Sass.
 
 ## System Design
 
-![System Design Chart of Cutshort](https://imgur.com/a/yvcvFkY "System Design Diagram")
+![System Design Chart of Cutshort](https://i.imgur.com/nTuQDmD_d.webp?maxwidth=760&fidelity=grand "System Design Diagram")
 
 It's live at [cutshort.in](https://cutshort.in)
 
