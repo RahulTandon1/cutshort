@@ -73,10 +73,10 @@ function showResult(shortlink) {
   let resultAnchor = document.getElementById("result-link");
   // let hostURL = window.location.hostname;
   let hostURL = "cutshort.in"; // hardcoding cutshort.in
-  url1 = `${hostURL}/${shortlink}`;
+  url1 = `cutshort.in/${shortlink}`;
   url2 = 'https://' + url1
 
-  console.log("url", url);
+  console.log("url", url2);
   resultAnchor.innerText = url1
   resultAnchor.href = url2;
   

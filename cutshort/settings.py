@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('secret_key')
 DB_URL = os.environ.get('DATABASE_URL')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['cutshort-trial.herokuapp.com',
@@ -90,7 +90,7 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.config(default=DB_URL,
-                                              conn_max_age=None)
+                                              conn_max_age=3600)
 
 
 # Password validation
