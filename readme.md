@@ -1,4 +1,12 @@
-# Stuff
+# Cutshort
+
+Please note: This readme is currently incomplete. It might be worked around Aug 2021 or later. Till then I hope what's written is suffice.
+
+Cutshort is URL Shortner built with Django, MySQL, and Sass.
+
+---
+
+> Some notes/brainstorming for myself
 
 ## How we'll build this out
 

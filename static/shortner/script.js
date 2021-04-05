@@ -1,8 +1,28 @@
-getStats()
+function calcMonths() {
+  var d1 = new Date();
+  var d2 = new Date();
+  
+  // Cutshort was built in Aug 2020
+  d1.setMonth(8);
+  d1.setYear(2020);
+  
+  /*
+  1000 milliseconds per sec * 60 seconds per min * 60 mins per hour 
+  * 24 hours per day * 30 days a month
+  */ 
+
+  millisecondsInAMonth = 1000 * 60 * 60 * 25 * 30
+  
+  // difference between when user is seeing and when cutshort was built, in months
+  text = Math.round( (d2-d1)/millisecondsInAMonth );
+
+}
+
 function getStats() {
   let statsBar = document.getElementById("stats")
-
   let statHolders = document.querySelectorAll(".stat-num")
+  let months = calcMonths()
+  statHolders[2].innerText = calcMonths
 
 
   
@@ -96,10 +116,13 @@ function showResult(shortlink) {
   let resultAnchor = document.getElementById("result-link");
   // let hostURL = window.location.hostname;
   let hostURL = "cutshort.in"; // hardcoding cutshort.in
-  url = `http://${hostURL}/${shortlink}`;
+  url1 = `${hostURL}/${shortlink}`;
+  url2 = 'https://' + url1
+
   console.log("url", url);
-  resultAnchor.href = url;
-  resultAnchor.innerText = url;
+  resultAnchor.innerText = url1
+  resultAnchor.href = url2;
+  
 }
 
 function verifyLongLink() {
