@@ -4,11 +4,12 @@ from .models import Link
 from django.db.models import Sum
 import random
 import string
-
+import datetime
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
 
 
+# For Google Web Crawler to work and website to show up on Google
 def robots_txt(request):
     lines = [
         "User-Agent: *",
@@ -18,8 +19,28 @@ def robots_txt(request):
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
 
+# Returning home page
 def index(request):
-    return render(request, 'shortner/index.html')
+    stats = getStats()
+    return render(request, 'shortner/index.html', context=stats)
+
+# returns stats for rendering in index.html
+
+
+def getStats():
+    # generating date information
+    d1 = datetime.datetime(2020, 8, 30)
+    d2 = datetime.datetime.now()
+    time_difference = d2-d1
+    months = round(time_difference.days / 30)
+
+    stats = {
+        'total_links': Link.objects.all().count(),
+        'total_clicks': Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks'],
+        'active_months': months
+    }
+
+    return stats
 
 
 def check(request, shortlink):
@@ -27,12 +48,13 @@ def check(request, shortlink):
         return HttpResponse(dumps({'link': shortlink, 'available': False}))
     else:
         return HttpResponse(dumps({'link': shortlink, 'available': True}))
+    # not strictly required but might be useful for debugging
     print('nothing got returned')
 
 
 def create(request):
     # assump1: post body exists
-    # assump1: post body has 'longlink' defined
+    # assump2: post body has 'longlink' defined
 
     if request.method != 'POST':
         return redirect('/')
@@ -77,12 +99,13 @@ def linkExists(shortlink):
     except Link.DoesNotExist:
         return False
 
-# helper functinos
+# ------- helper functions ---------
 
 
 def getShortRandomLink(length):
     temp = get_random_string(length)
     if linkExists(temp):
+        # recursion!
         getShortRandomLink(length)
     return temp
 
@@ -93,6 +116,8 @@ def get_random_string(length):
     return result_str
 
 
+# function to tell user how many clicks their link have gotten
+# usable as api/clicky/<shortlink>
 def clicks(request, shortlink):
     # print(f"shortlink of cliks is {shortlink}\n")
     if linkExists(shortlink):
@@ -101,22 +126,3 @@ def clicks(request, shortlink):
 
     else:
         return HttpResponse(0)
-
-
-def get_all_links(request):
-    count = Link.objects.all().count()
-    return HttpResponse(count)
-
-
-def get_total_clicks(request):
-    total_clicks = Link.objects.aggregate(
-        total_clicks=Sum('clicks'))['total_clicks']
-    return HttpResponse(total_clicks)
-
-
-def getStats(request):
-    stats = {
-        'totalLinks': Link.objects.all().count(),
-        'totalClicks': Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks']
-    }
-    return HttpResponse(dumps(stats))

@@ -75,14 +75,18 @@ header {
 }
 
 #stats {
-  visibility: hidden; // becomes visible once data is loaded via JS
+  // visibility: hidden; // becomes visible once data is loaded via JS
   padding-top: 20px;
   padding-bottom: 30px;
   background-color: #fff;
   font-size: 1em;
   text-align: center;
+  color: purple;
   border-bottom: solid 1px $text-grey;
 
+  h2 {
+    color: $text-grey;
+  }
   #stats-wrapper {
     display: flex;
     flex-direction: row;

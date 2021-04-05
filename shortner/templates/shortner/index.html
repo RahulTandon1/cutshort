@@ -67,17 +67,17 @@
         </div>
     </section>
     
-    <section id="stats" onload="getStats()">
+    <section id="stats" >
         <h2>Stats</h2>
         <div id="stats-wrapper">
             <div class="stat-container">
-                <span class="stat-num">0</span><br/>clicks
+                <span class="stat-num">{{ total_clicks }}</span><br/>clicks
             </div>
             <div class="stat-container">
-                <span class="stat-num">0</span><br/>links
+                <span class="stat-num">{{ total_links }}</span><br/>links
             </div>
             <div class="stat-container">
-                <span class="stat-num">0</span><br/>active months
+                <span class="stat-num">{{ active_months }}</span><br/>active months
             </div>
         </div>
     </section>

@@ -76,13 +76,17 @@ header h1 {
 }
 
 #stats {
-  visibility: hidden;
   padding-top: 20px;
   padding-bottom: 30px;
   background-color: #fff;
   font-size: 1em;
   text-align: center;
+  color: purple;
   border-bottom: solid 1px #575757;
+}
+
+#stats h2 {
+  color: #575757;
 }
 
 #stats #stats-wrapper {
