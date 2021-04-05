@@ -1,3 +1,6 @@
+getStats() // call as soon as possible
+
+
 function calcMonths() {
   var d1 = new Date();
   var d2 = new Date();
@@ -14,7 +17,9 @@ function calcMonths() {
   millisecondsInAMonth = 1000 * 60 * 60 * 25 * 30
   
   // difference between when user is seeing and when cutshort was built, in months
-  text = Math.round( (d2-d1)/millisecondsInAMonth );
+  monthsDiff = Math.round( (d2-d1)/millisecondsInAMonth );
+  
+  return monthsDiff
 
 }
 
@@ -22,7 +27,7 @@ function getStats() {
   let statsBar = document.getElementById("stats")
   let statHolders = document.querySelectorAll(".stat-num")
   let months = calcMonths()
-  statHolders[2].innerText = calcMonths
+  statHolders[2].innerText = months
 
 
   
