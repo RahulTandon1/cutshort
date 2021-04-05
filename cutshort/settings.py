@@ -30,7 +30,7 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ['cutshort-trial.herokuapp.com',
-                 'localhost', 'www.cutshort.in', 'cutshort.in']
+                 'localhost', '127.0.0.1', 'www.cutshort.in', 'cutshort.in']
 
 
 # Application definition
@@ -90,7 +90,7 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.config(default=DB_URL,
-                                              conn_max_age=600)
+                                              conn_max_age=None)
 
 
 # Password validation
@@ -128,6 +128,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
 # if not DEBUG:
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'

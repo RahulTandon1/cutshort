@@ -10,8 +10,9 @@ urlpatterns = [
     path('api/check/<str:shortlink>', views.check, name="check"),
     path('api/create/', views.create, name="create"),
     path('api/clicky/<str:shortlink>', views.clicks, name="clicks"),
-    path('api/getAllLinks', views.get_all_links, name="get_all"),
-    path('api/getTotalClicks', views.get_total_clicks, name="get_total_of_all"),
+    # path('api/getAllLinks', views.get_all_links, name="get_all"),
+    # path('api/getTotalClicks', views.get_total_clicks, name="get_total_of_all"),
+    path('api/getStats', views.getStats, name="get_stats"),
     path('<str:shortlink>', views.rediretor, name="redirector")
 
 ]

@@ -46,7 +46,6 @@
     </header>
     
 
-    <!--django docs recommend including this to avoid Cross Site Request Forgery-->
     <section id="main-shortner" >
         <h2>Try it!</h2>
         <div id="longlink-div">
@@ -68,19 +67,39 @@
         </div>
     </section>
 
+    <section id="stats" >
+        <h2>Stats</h2>
+        <div id="stats-wrapper">
+            <div class="stat-container">
+                <span class="stat-num">0</span><br/>links
+            </div>
+            <div class="stat-container">
+                <span class="stat-num">0</span><br/>clicks
+            </div>
+            <div class="stat-container">
+                <span class="stat-num">7</span><br/>active months
+            </div>
+        </div>
+    </section>
+
+
+    <!--django docs recommend including this to avoid Cross Site Request Forgery-->
     {% csrf_token %}
         
     <section id="about">
         <h2>What is Cutshort?</h2>
         <div>
             <p>
-            Cutshort.in is a URL Shortner built by Rahul Tandon with love in India. 
+            Cutshort.in is a URL Shortner.
             <br><br>
-            If you have very long URLs you can make them shorter and cleaner with Cutshort.
+            If you have very long URLs you can make them shorter and cleaner.
             <br><br>
             For example
-            <a href="https://www.amazon.in/btgalitz-Rick-Roll/dp/B07K6QP8RF/">https://www.amazon.in/btgalitz-Rick-Roll/dp/B07K6QP8RF/</a>
-            can be changed to simply <a href="http://www.cutshort.in/wwrno">http://www.cutshort.in/wwrno</a>
+            <a href="https://www.amazon.in/btgalitz-Rick-Roll/dp/B07K6QP8RF/">www.amazon.in/btgalitz-Rick-Roll/dp/B07K6QP8RF/</a>
+            can be changed to simply <a href="http://www.cutshort.in/wwrno">cutshort.in/ricky</a>
+
+            <br><br>
+            And the guy on the right is me :-)
             </p>
             <img src="{% static '/shortner/rahul.jpg' %}"/>
         </div>
@@ -89,7 +108,7 @@
 
     <script src="{% static '/shortner/script.js' %}"></script>
     <footer>
-        <p>oopsie</p>
+        <p>Made with love by <a href="https://rahultandon.co" target="_blank">Rahul</a> in India.</p>
     </footer>
 </body>
 </html>

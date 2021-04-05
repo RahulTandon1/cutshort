@@ -28,7 +28,7 @@ header {
   background-color: #e9ecef;
   font-size: 1.2em;
   text-align: center;
-  h3 {
+  h2 {
     color: $text-grey;
   }
   hr {
@@ -74,6 +74,33 @@ header {
   padding-bottom: 20px;
 }
 
+#stats {
+  visibility: hidden; // becomes visible once data is loaded via JS
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  font-size: 1em;
+  text-align: center;
+  border-bottom: solid 1px $text-grey;
+
+  #stats-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .stat-container {
+    display: inline-block;
+    // border-style: dashed;
+    padding-left: auto;
+    flex-grow: 1;
+    flex-basis: 33%;
+
+    .stat-num {
+      font-size: 2em;
+    }
+  }
+}
+
 #about {
   margin-top: 30px;
   text-align: center;
@@ -107,4 +134,14 @@ footer {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 1.5em;
+  a,
+  a:visited,
+  :active {
+    font-weight: 550;
+    color: #fff;
+    &:on-hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+  }
 }

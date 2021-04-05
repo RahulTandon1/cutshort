@@ -1,3 +1,26 @@
+getStats()
+function getStats() {
+  let statsBar = document.getElementById("stats")
+
+  let statHolders = document.querySelectorAll(".stat-num")
+
+
+  
+  fetch(`/api/getStats`, {
+      method: "GET",
+      credentials: "same-origin",
+    })
+    .then(res => res.json())
+    .then( res => {
+      
+      statHolders[0].innerText = res.totalClicks
+      statHolders[1].innerText = res.totalLinks
+      statsBar.style.visibility = "visible"
+    } )
+    .catch(err => console.log(err))
+
+}
+
 async function isAvailable() {
   shortlink = getShortlink();
   try {

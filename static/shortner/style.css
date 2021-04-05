@@ -25,7 +25,7 @@ header h1 {
   padding-bottom: 20px;
 }
 
-#main-shortner h3 {
+#main-shortner h2 {
   color: #575757;
 }
 
@@ -75,6 +75,43 @@ header h1 {
   border-color: #575757;
 }
 
+#stats {
+  visibility: hidden;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  font-size: 1em;
+  text-align: center;
+  border-bottom: solid 1px #575757;
+}
+
+#stats #stats-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#stats .stat-container {
+  display: inline-block;
+  padding-left: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+}
+
+#stats .stat-container .stat-num {
+  font-size: 2em;
+}
+
 #about {
   margin-top: 30px;
   text-align: center;
@@ -118,4 +155,18 @@ footer {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 1.5em;
+}
+
+footer a,
+footer a:visited,
+footer :active {
+  font-weight: 550;
+  color: #fff;
+}
+
+footer a:on-hover,
+footer a:visited:on-hover,
+footer :active:on-hover {
+  text-decoration: underline;
+  color: #fff;
 }

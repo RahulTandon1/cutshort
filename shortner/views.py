@@ -98,14 +98,25 @@ def clicks(request, shortlink):
     if linkExists(shortlink):
         link = Link.objects.get(pk=shortlink)
         return HttpResponse(link.clicks)
-        
+
     else:
         return HttpResponse(0)
+
 
 def get_all_links(request):
     count = Link.objects.all().count()
     return HttpResponse(count)
 
+
 def get_total_clicks(request):
-    total_clicks = Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks']
+    total_clicks = Link.objects.aggregate(
+        total_clicks=Sum('clicks'))['total_clicks']
     return HttpResponse(total_clicks)
+
+
+def getStats(request):
+    stats = {
+        'totalLinks': Link.objects.all().count(),
+        'totalClicks': Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks']
+    }
+    return HttpResponse(dumps(stats))
