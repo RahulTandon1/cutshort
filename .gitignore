@@ -2,3 +2,4 @@ __pycache__/
 shortner/__pycache__/
 env/ 
 .secret
+dev_env_variables_setup.sh
