@@ -2,15 +2,21 @@
 from json import loads, dumps
 from .models import Link
 from django.db.models import Sum
+from django.db import OperationalError
+from tenacity import (retry, stop_after_attempt, wait_fixed,
+                      retry_if_exception_type)
+
 import random
 import string
 import datetime
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseServerError, Http404, HttpResponseBadRequest
+from django.http import (HttpResponse, HttpResponseServerError, Http404,
+                         HttpResponseBadRequest)
 
 
 # For Google Web Crawler to work and website to show up on Google
 def robots_txt(request):
+
     lines = [
         "User-Agent: *",
         "Disallow: /admin/"
@@ -21,13 +27,23 @@ def robots_txt(request):
 
 # Returning home page
 def index(request):
-    stats = getStats()
+    stats = get_stats()
     return render(request, 'shortner/index.html', context=stats)
 
 # returns stats for rendering in index.html
 
 
-def getStats():
+def return_last_value(retry_state):
+    print(f'\n\n attempt number {retry_state.attempt_number} \n \
+        function for which retry was called: {retry_state.fn} \n\n')
+
+
+@retry(retry=retry_if_exception_type(OperationalError),
+       stop=stop_after_attempt(2),
+       wait=wait_fixed(0.5),
+       retry_error_callback=return_last_value)
+def get_stats():
+
     # generating date information
     d1 = datetime.datetime(2020, 8, 30)
     d2 = datetime.datetime.now()
@@ -36,7 +52,8 @@ def getStats():
 
     stats = {
         'total_links': Link.objects.all().count(),
-        'total_clicks': Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks'],
+        'total_clicks':
+            Link.objects.aggregate(total_clicks=Sum('clicks'))['total_clicks'],
         'active_months': months
     }
 
@@ -82,6 +99,10 @@ def create(request):
     return HttpResponse(dumps(obj.getDict()))
 
 
+@retry(retry=retry_if_exception_type(OperationalError),
+       stop=stop_after_attempt(2),
+       wait=wait_fixed(0.5),
+       retry_error_callback=return_last_value)
 def rediretor(request, shortlink):
     shortlinkObj = get_object_or_404(Link, pk=shortlink)
 
@@ -90,6 +111,10 @@ def rediretor(request, shortlink):
     shortlinkObj.save()
 
     return redirect(shortlinkObj.longlink)
+
+
+def custom_404(request, exception):
+    return render(request, 'shortner/404.html', status=404)
 
 
 def linkExists(shortlink):
@@ -125,4 +150,4 @@ def clicks(request, shortlink):
         return HttpResponse(link.clicks)
 
     else:
-        return HttpResponse(0)
+        return HttpResponse('0')
