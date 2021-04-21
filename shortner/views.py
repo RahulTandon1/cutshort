@@ -39,8 +39,8 @@ def return_last_value(retry_state):
 
 
 @retry(retry=retry_if_exception_type(OperationalError),
-       stop=stop_after_attempt(2),
-       wait=wait_fixed(0.5),
+       stop=stop_after_attempt(3),
+       wait=wait_fixed(0.75),
        retry_error_callback=return_last_value)
 def get_stats():
 
@@ -100,8 +100,8 @@ def create(request):
 
 
 @retry(retry=retry_if_exception_type(OperationalError),
-       stop=stop_after_attempt(2),
-       wait=wait_fixed(0.5),
+       stop=stop_after_attempt(3),
+       wait=wait_fixed(0.75),
        retry_error_callback=return_last_value)
 def rediretor(request, shortlink):
     shortlinkObj = get_object_or_404(Link, pk=shortlink)
